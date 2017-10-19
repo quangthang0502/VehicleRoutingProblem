@@ -239,7 +239,7 @@ function run(items,lanThu) {
 
     ketqua.append("<h1>Tổng quãng đường : </h1>" + tinhTong(toiUu));
     for(i = 0;i < toiUu.length;i++) {
-        var text = "<h3>Xe : "+ i +"</h3>";
+        var text = "<h3 style='color: "+toiUu[i].color+"'>Xe : "+ i +"</h3>";
         ketqua.append(text);
         var diQuaThanhPho = toiUu[i].diQua;
         var texthead = "<ul class='thang'>";

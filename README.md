@@ -2,10 +2,10 @@
 Bài tập toán rời rạc
 
 Chú thích :
- - Tạo ngẫu nhiên số địa điểm thành phố mà xe cần tới, mỗi thành phố có một tọa độ được tạo ngẫu nhiên.
- - Số lượng hàng cần chuyển đến được tạo ngẫu nhiên từ 1-50 đơn vị
- - Sau khi nhập sức chứa của mỗi xe và số lượng thành phố thì hệ thống sẽ tạo ngẫu nhiên các thành phố
- - Các thành phố được hiện thị bằng hình tròn màu đỏ còn kho hàng sẽ là hình tròn màu đen
+    - Chọn file test
+    - Kho hàng sẽ kí hiệu màu đen
+    - Địa điểm sẽ kí hiệu bằng màu đỏ
+    - Màu của tên xe tương ứng với màu đường đi
  
 Thuật toán :
     - Thuật toán sẽ được chạy 100 lượt để so sánh và lấy kết quả có tổng quãng đường nhỏ nhất

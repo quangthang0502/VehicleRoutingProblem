@@ -57,7 +57,7 @@ function run(items,lanThu) {
             this.maTP = maTP;
             this.x = x;
             this.y = y;
-            this.hangCanCungCap = hangCanCungCap;
+            this.hangCanCungCap = parseInt(hangCanCungCap);
             this.xf = parseInt(x)*10;
             this.yf = parseInt(y)*10;
             ctx.beginPath();
@@ -74,11 +74,12 @@ function run(items,lanThu) {
     }
 
     class KhoHang {
-        constructor() {
-            this.x = 0;
-            this.y = 0;
-            this.xf = 0;
-            this.yf = 0;
+        constructor(x,y) {
+            this.x = x;
+            this.y = y;
+            this.xf = parseInt(x)*10;
+            this.yf = parseInt(y)*10;
+            this.cungCap = 0;
             ctx.beginPath();
             ctx.arc(this.xf, this.yf, 20, 0, 2 * Math.PI);
             ctx.fillStyle = 'black';
@@ -88,7 +89,7 @@ function run(items,lanThu) {
 
     class xeChoHang {
         constructor(sucChua, khoHang) {
-            this.sucChua = sucChua;
+            this.sucChua = parseInt(sucChua);
             this.soHangCho = 0;
             this.tongQuangDuong = 0;
             this.veKho = false;
@@ -100,10 +101,10 @@ function run(items,lanThu) {
 
         checkHang(thanhPho) {
             var diemHienTai = this.diQua.length - 1;
-            var test = this.soHangCho + thanhPho.hangCanCungCap;
+            var test = this.soHangCho + parseInt(thanhPho.hangCanCungCap);
             if (this.sucChua > test) {
                 this.diQua.push(thanhPho);
-                this.soHangCho = this.soHangCho + thanhPho.hangCanCungCap;
+                this.soHangCho = this.soHangCho + parseInt(thanhPho.hangCanCungCap);
                 this.tongQuangDuong = this.tongQuangDuong + khoangCach(this.diQua[diemHienTai], thanhPho);
                 return true;
             }
@@ -152,16 +153,20 @@ function run(items,lanThu) {
     var diaDiem;
 
     sucChua = items[0];
+    console.log(sucChua);
     diaDiem = items[1];
     ctx.clearRect(0, 0, 1000, 1000);
-    khoHang = new KhoHang();
     var m = 0;
     var n = 0;
-    for(i = 2;i < items.length; i++){
+    var content = items[2].split(' ');
+    khoHang = new KhoHang(content[2],content[3]);
+    for(i = 3;i < items.length; i++){
         if(i < (parseInt(diaDiem)+2)){
             var content = items[i].split(' ');
             cacThanhPho[m] = new ThanhPho(content[1], content[2], content[3], 0);
             m++;
+        } else if (i === (parseInt(diaDiem)+2)) {
+
         } else {
             var content = items[i].split(' ');
             cacThanhPho[n].hangCanCungCap = content[1];
@@ -221,7 +226,7 @@ function run(items,lanThu) {
                 break;
             }
         }
-        if (thu != 0) {
+        if (thu !== 0) {
             if(tinhTong(toiUu) > tinhTong(danhSachXe)) {
                 toiUu = [];
                 toiUu = danhSachXe.slice();
